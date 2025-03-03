@@ -9,6 +9,7 @@ class BlogIndexPage(Page):
     content_panels = Page.content_panels + ["intro"]
 
 class BlogPage(Page):
+    image = models.ImageField(upload_to="blog/%Y/%m/%d", blank=True)
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
     body = RichTextField(blank=True)
@@ -18,4 +19,4 @@ class BlogPage(Page):
         index.SearchField('body'),
     ]
 
-    content_panels = Page.content_panels + ["date", "intro", "body"]
+    content_panels = Page.content_panels + ["image", "date", "intro", "body"]
