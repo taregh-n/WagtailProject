@@ -1,18 +1,100 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags %}
+{% load static wagtailcore_tags %}
 
 {% block body_class %}template-blogpage{% endblock %}
 
 {% block content %}
-    <h1>{{ page.title }}</h1>
-    <img src="{{ page.image.url }}">
-    <p class="meta">{{ page.date }}</p>
+    <div class="intro"></div>
 
-    <div class="intro">{{ page.intro }}</div>
 
-    {{ page.body|richtext }}
 
-    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+<!-- =======================
+Main START -->
+<section>
+	<div class="container position-relative" data-sticky-container>
+		<div class="row">
+			<!-- Main Content START -->
+			<div class="col-lg-8 mb-5">
+                <a href="{{ page.get_parent.url }}">{{ page.get_parent.title }}</a>:
+                <a href="#" class="badge bg-danger bg-opacity-10 text-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>دسته بندی</a>
+                        <span class="ms-2 small">بروزرسانی: {{ page.date }}</span>
+                        <h1 class="display-6">{{ page.title }}</h1>
+
+                <div class="ratio ratio-16x9 overflow-hidden rounded my-4">
+                  <!-- HTML video START -->
+                    <img class="rounded" src="{{ page.image.url }}" alt="">
+                  <!-- HTML video END -->
+                </div>
+
+                <p>اشاره: {{ page.intro }} </p>
+                {{ page.body|richtext }}
+			</div>
+			<!-- Main Content END -->
+			<!-- Right sidebar START -->
+			<div class="col-lg-4">
+				<div data-sticky data-margin-top="80" data-sticky-for="991">
+	      	<!-- About me -->
+					<div class="bg-light rounded p-3 p-md-4">
+            <div class="d-flex mb-3">
+              <!-- Avatar -->
+              <a class="flex-shrink-0" href="#">
+                <div class="avatar avatar-xl border border-4 border-danger rounded-circle">
+                  <img class="avatar-img rounded-circle" src="{% static 'images/avatar/05.jpg' %}" alt="avatar">
+                </div>
+              </a>
+              <div class="flex-grow-1 ms-3">
+                <span>سلام</span>
+                <h3 class="mb-0">فرزانه مرادی</h3>
+                <p>روزنامه نگار سایت Blogzine</p>
+              </div>
+            </div>
+            <p>فرزانه مرادی سردبیر ارشد این وبلاگ است و همچنین اخبار فوری مستقر در لندن را گزارش می دهد. او از سال 2015 درباره دولت، عدالت کیفری و نقش پول در سیاست نوشته است. </p>
+            <a href="#" class="btn btn-danger-soft btn-sm">مشاهده نوشته ها</a>
+          </div>
+
+          <!-- Most read -->
+          <div>
+            <h4 class="mt-5 mb-3">پربحث ترین ها</h4>
+            <div class="d-flex position-relative mb-3">
+              <span class="me-3 fa-fw fw-bold fs-3 opacity-5">01</span>
+              <h6><a href="#" class="stretched-link">ده نکته در مورد استارتاپ ها که نمی توانید از کتاب یاد بگیرید!</a></h6>
+            </div>
+            <div class="d-flex position-relative mb-3">
+              <span class="me-3 fa-fw fw-bold fs-3 opacity-5">03</span>
+              <h6><a href="#" class="stretched-link">سوالاتی که همه افراد شاغل در IT باید بدانند چگونه به آنها پاسخ دهند!</a></h6>
+            </div>
+            <div class="d-flex position-relative mb-3">
+              <span class="me-3 fa-fw fw-bold fs-3 opacity-5">04</span>
+              <h6><a href="#" class="stretched-link">10 نشانه که نشان می دهد برای شروع یک کسب و کار جدید به آن نیاز دارید!</a></h6>
+            </div>
+            <div class="d-flex position-relative mb-3">
+              <span class="me-3 fa-fw fw-bold fs-3 opacity-5">05</span>
+              <h6><a href="#" class="stretched-link">ده نکته در مورد استارتاپ ها که نمی توانید از کتاب یاد بگیرید!</a></h6>
+            </div>
+            <div class="d-flex position-relative mb-3">
+              <span class="me-3 fa-fw fw-bold fs-3 opacity-5">06</span>
+              <h6><a href="#" class="stretched-link">سوالاتی که همه افراد شاغل در IT باید بدانند چگونه به آنها پاسخ دهند!</a></h6>
+            </div>
+            <div class="d-flex position-relative mb-3">
+              <span class="me-3 fa-fw fw-bold fs-3 opacity-5">07</span>
+              <h6><a href="#" class="stretched-link">هرکسی که در تجارت کار می کند باید بداند چگونه به آن پاسخ دهد!</a></h6>
+            </div>
+          </div>
+				</div>
+			</div>
+			<!-- Right sidebar END -->
+		</div>
+	</div>
+</section>
+<!-- =======================
+Main END -->
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
 
 {% endblock %}
