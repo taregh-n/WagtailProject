@@ -1,0 +1,11 @@
+<html>
+<body dir="rtl" style="padding: 20px">
+<p>
+{{ object.title }}
+</p>
+<a href="{% url 'blog_detail' object.pk %}/edit" style="border-style:solid; padding: 5px">ویرایش</a>
+<p>
+<a href="{% url 'blog_list' %}">> بازگشت</a>
+</p>
+</body>
+</html>

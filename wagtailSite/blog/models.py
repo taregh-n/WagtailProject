@@ -7,6 +7,7 @@ class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
 
     content_panels = Page.content_panels + ["intro"]
+    subpage_types = ['blog.BlogPage']
 
 class BlogPage(Page):
     image = models.ImageField(upload_to="blog/%Y/%m/%d", blank=True)
@@ -20,3 +21,4 @@ class BlogPage(Page):
     ]
 
     content_panels = Page.content_panels + ["image", "date", "intro", "body"]
+    parent_page_types = ['blog.BlogIndexPage']
