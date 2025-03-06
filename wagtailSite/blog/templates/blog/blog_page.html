@@ -37,25 +37,26 @@ Main START -->
 			<!-- Right sidebar START -->
 			<div class="col-lg-4">
 				<div data-sticky data-margin-top="80" data-sticky-for="991">
-	      	<!-- About me -->
-					<div class="bg-light rounded p-3 p-md-4">
-            <div class="d-flex mb-3">
-              <!-- Avatar -->
-              <a class="flex-shrink-0" href="#">
-                <div class="avatar avatar-xl border border-4 border-danger rounded-circle">
-                  <img class="avatar-img rounded-circle" src="{% static 'images/avatar/05.jpg' %}" alt="avatar">
-                </div>
-              </a>
-              <div class="flex-grow-1 ms-3">
-                <span>سلام</span>
-                <h3 class="mb-0">فرزانه مرادی</h3>
-                <p>روزنامه نگار سایت Blogzine</p>
-              </div>
-            </div>
-            <p>فرزانه مرادی سردبیر ارشد این وبلاگ است و همچنین اخبار فوری مستقر در لندن را گزارش می دهد. او از سال 2015 درباره دولت، عدالت کیفری و نقش پول در سیاست نوشته است. </p>
-            <a href="#" class="btn btn-danger-soft btn-sm">مشاهده نوشته ها</a>
-          </div>
-
+	      	<!-- About author -->
+                {% with authors=page.author.all %}
+                    {% if authors %}
+                        {% for author in authors %}
+                    <div class="bg-light rounded p-3 p-md-4">
+                        <div class="d-flex mb-3">
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xl border border-3 border-danger rounded-circle">
+                                <img class="avatar-img rounded-circle" src="{% static 'images/avatar/05.jpg' %}" alt="avatar">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <span>نویسنده</span>
+                                <h3 class="mb-0">{{ author.name }}</h3>
+                                <p>{{ author.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
           <!-- Most read -->
           <div>
             <h4 class="mt-5 mb-3">پربحث ترین ها</h4>

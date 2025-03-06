@@ -35,7 +35,14 @@ Main content START -->
 											<div class="avatar avatar-xs">
 												<img class="avatar-img rounded-circle" src="{% static 'images/avatar/01.jpg' %}" alt="avatar">
 											</div>
-											<span class="ms-3">با <a href="#" class="stretched-link text-reset btn-link">نویسنده!</a></span>
+                                            {% with authors=post.specific.author.all %}
+                                                {% if authors %}
+                                                    <span class="ms-3">با :
+                                                    {% for author in authors %}
+                                                        <a href="#" class="stretched-link text-reset btn-link">{{ author.name }}</a> ، </span>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            {% endwith %}
 										</div>
 									</div>
 								</li>
