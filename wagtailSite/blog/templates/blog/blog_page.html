@@ -29,7 +29,16 @@ Main START -->
                     <img class="rounded" src="{{ page.image.url }}" alt="">
                   <!-- HTML video END -->
                 </div>
-
+                {% with tags=page.tags.all %}
+                    {% if tags %}
+                        <div class="tags">
+                            <h3>Tags</h3>
+                            {% for tag in tags %}
+                                <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button">{{ tag }}</button></a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
                 <p>اشاره: {{ page.intro }} </p>
                 {{ page.body|richtext }}
 			</div>
