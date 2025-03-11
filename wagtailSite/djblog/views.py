@@ -1,5 +1,7 @@
 from django.views.generic import ListView, DetailView, UpdateView, CreateView
 from .models import DjBlogModel
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from django.shortcuts import render
 
 # Create your views here.
@@ -23,3 +25,9 @@ class BlogCreateView(CreateView):
     template_name = "djblog/add_blog.html"
     fields = ["title"]
     success_url = "/djblog/"
+
+class BlogAPI(APIView):
+    def get(self, request, format=None):
+        posts = DjBlogModel.objects.all()
+        res = [post.title for post in posts]
+        return Response(res)

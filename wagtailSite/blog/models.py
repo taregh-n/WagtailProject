@@ -9,7 +9,6 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from taggit.models import TaggedItemBase
 
-
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
 

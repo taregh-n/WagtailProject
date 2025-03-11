@@ -5,10 +5,11 @@ from django.contrib import admin
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
-from djblog.views import BlogListView, BlogDetailView, BlogEditView, BlogCreateView
+from djblog.views import BlogListView, BlogDetailView, BlogEditView, BlogCreateView, BlogAPI
 from search import views as search_views
 
 urlpatterns = [
+    path("api/posts", BlogAPI.as_view(), name="api"),
     path("djblog/", BlogListView.as_view(), name="blog_list" ),
     path("djblog/create", BlogCreateView.as_view(), name="blog_add" ),
     path("djblog/<pk>", BlogDetailView.as_view(), name="blog_detail" ),

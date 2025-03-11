@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     "blog",
     "djblog",
     "search",
+    'rest_framework',
+    "wagtail.api.v2",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
