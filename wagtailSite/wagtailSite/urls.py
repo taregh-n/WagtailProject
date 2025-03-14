@@ -5,11 +5,17 @@ from django.contrib import admin
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
-from djblog.views import BlogListView, BlogDetailView, BlogEditView, BlogCreateView, BlogAPI
+from djblog.views import BlogListView, BlogDetailView, BlogEditView, BlogCreateView, BlogAPI, BlogViewSet
 from search import views as search_views
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'api/viewset', BlogViewSet, basename='posts')
+
+
 
 urlpatterns = [
-    path("api/posts", BlogAPI.as_view(), name="api"),
+    path("api/apiview/posts", BlogAPI.as_view(), name="api-veiw"),
     path("djblog/", BlogListView.as_view(), name="blog_list" ),
     path("djblog/create", BlogCreateView.as_view(), name="blog_add" ),
     path("djblog/<pk>", BlogDetailView.as_view(), name="blog_detail" ),
@@ -18,7 +24,7 @@ urlpatterns = [
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
-]
+] + router.urls
 
 
 if settings.DEBUG:
